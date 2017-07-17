@@ -1,0 +1,126 @@
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: #0097A7;
+}
+
+a:visited {
+    color: #0097A7;
+}
+
+a:hover {
+    color: #0097A7;
+}
+
+a:active {
+    color: #0097A7;
+}
+
+body {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    background-color: #F5F5F5;
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+}
+
+#header {
+    text-align: center;
+    font-size: 14px;
+}
+
+#header img {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #eaeaea;
+    padding: 4px;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition: bottom 0.5s ease-out;
+}
+
+#title {
+    width: 85px;
+    margin: auto;
+    border-top: 1px solid #c7ced1;
+    border-bottom: 1px solid #c7ced1;
+    font-size: 20px;
+    transition: bottom 0.5s ease-out 50ms;
+}
+
+#content {
+    width: cal(100%-2*60px);
+    margin: 30px;
+    color: #4c4c4c;
+    transition: bottom 0.5s ease-out 100ms;
+}
+
+.transition {
+    position: relative;
+    bottom: 300px;
+}
+
+#content input {
+    height: 30px;
+    border: 0;
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+    background-color: white;
+}
+
+.journals {
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    margin-bottom: 5px;
+    position: relative;
+    right: 1000px;
+}
+
+.journal-time {
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 80%;
+}
+
+.journal-text {
+    display: block;
+    padding-left: 15px;
+    padding-right: 20px;
+    word-break: break-all;
+    border-left: 1px solid #c7ced1;
+    margin-left: 60px;
+}
+
+.year {
+    text-align: center;
+    font-size: 120%;
+    margin-bottom: 10px;
+}
+
+.month-day {
+    text-align: left;
+    font-size: 90%;
+    margin-bottom: 10px;
+}
+
+#add-journal-button {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    font-size: 40px;
+    color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    background-color: rgba(200, 200, 200, 0.95);
+    width: 55px;
+    height: 55px;
+    margin: auto;
+    z-index: 3;
+}

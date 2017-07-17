@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#4c4c4c">
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="bing">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <title>diary -bing</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id='header'>
+        <img src="img/avatar.png" onclick='window.open("https://about.yokoee.cn")'>
+        <div>
+
+        </div>
+        <div id='title'>
+            <p>bing</p>
+        </div>
+    </div>
+    <div id='content'>
+        <p id='add-journal-button' onclick='add_journal()'>+</p>
+    </div>
+    <script>
+        window.onload = function() {
+            let tran_journals = document.getElementsByClassName('journals');
+            for (let i = 0; i < tran_journals.length; i++) {
+                tran_journals[i].style.right = '0';
+            }
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://yokoee.cn:3000/journals/page/1', false);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send(document.cookie);
+        if (xhr.status == 401) {
+            document.cookie = 'token=';
+            window.location.href = 'login.html';
+        } else if (xhr.status == 200) {
+            var year = new Number();
+            var mon = new Number();
+            var day = new Number();
+            var content = document.getElementById('content');
+            var journals = JSON.parse(xhr.responseText);
+            for (var i in journals) {
+                if (journals[i].date.year != year) {
+                    year = journals[i].date.year;
+                    let html_year = document.createElement('div');
+                    html_year.setAttribute('class', 'year');
+                    html_year.innerText = year + '年';
+                    content.appendChild(html_year);
+                }
+                if (journals[i].date.mon != mon || journals[i].date.day != day) {
+                    mon = journals[i].date.mon;
+                    day = journals[i].date.day;
+                    let html_mon_day = document.createElement('div');
+                    html_mon_day.setAttribute('class', 'month-day');
+                    html_mon_day.innerText = mon + '月' + day + '日';
+                    content.appendChild(html_mon_day);
+                }
+
+                let html_journals = document.createElement('div');
+                html_journals.style.transition = "right 0.5s ease-out " + (i + 1) * 5 + "ms";
+                html_journals.setAttribute('class', 'journals');
+                html_journals.setAttribute('id', journals[i].id);
+                html_journals.setAttribute('ondblclick', 'delDiary(this)');
+                content.appendChild(html_journals);
+
+                let html_journal_time = document.createElement('div');
+                html_journal_time.setAttribute('class', 'journal-time');
+
+                let hour = journals[i].date.hour;
+                let min = journals[i].date.min;
+                if (hour < 10) {
+                    hour = '0' + hour
+                }
+                if (min < 10) {
+                    min = '0' + min
+                }
+
+                html_journal_time.innerText = hour + ':' + min;
+                let html_journal_text = document.createElement('div');
+                html_journal_text.setAttribute('class', 'journal-text');
+                html_journal_text.innerText = journals[i].text;
+
+                html_journals = document.getElementById(journals[i].id);
+                html_journals.appendChild(html_journal_time);
+                html_journals.appendChild(html_journal_text);
+            }
+        }
+
+        function add_journal() {
+            var text = prompt('添加一条日记：');
+            if (text.length > 0) {
+                xhr_add = new XMLHttpRequest();
+                xhr_add.open('POST', 'http://yokoee.cn:3000/journal/add', false);
+                xhr_add.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr_add.send(document.cookie + '&text=' + text);
+                if (xhr_add.status == 200) {
+                    window.location.reload();
+                } else {
+                    alert('添加失败！');
+                }
+            }
+        }
+
+        function delDiary(ele) {
+            if (confirm('确定要删除吗？')) {
+                xhr_del = new XMLHttpRequest();
+                xhr_del.open('POST', 'http://yokoee.cn:3000/journal/delete', false);
+                xhr_del.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr_del.send(document.cookie + '&id=' + ele.id);
+                if (xhr_del.status == 200) {
+                    window.location.reload();
+                } else {
+                    alert('删除失败！');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

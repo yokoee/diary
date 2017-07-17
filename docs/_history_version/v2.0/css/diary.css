@@ -1,0 +1,125 @@
+.diary {
+    min-height: 100%;
+}
+
+.diary body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.diary #container {
+    margin: auto;
+    padding-bottom: 50px;
+    background-color: #fafafa;
+    width: 100%;
+    max-width: 600px;
+}
+
+.diary #nav {
+    width: 100%;
+    max-width: 600px;
+    height: 50px;
+    background-color: #00bcd4;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+}
+
+.diary .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.diary .br {
+    display: none;
+}
+
+.diary .input {
+    display: none;
+}
+
+.diary .button {
+    width: 20px;
+    height: 20px;
+    float: right;
+    padding: 15px;
+    color: white;
+}
+
+.diary .button:active {
+    color: gray;
+}
+
+#content {
+    position: relative;
+    top: 50px;
+    overflow: hidden;
+}
+
+#input_diary {
+    resize: vertical;
+    border: 1px solid #b0b0b0;
+    border-radius: 3px;
+    margin: 8px 0;
+    position: relative;
+    left: -3px;
+    height: 100px;
+    width: 100%;
+}
+
+.fa-close {
+    float: right;
+    display: none;
+    color: #00bcd4;
+    font-size: 1.3em;
+}
+
+#btn-submit:active {
+    color: #b0b0b0;
+}
+
+.diary-list {
+    margin: 20px;
+    background-color: white;
+    word-wrap: break-word;
+    display: relative;
+    padding: 10px 10px 0 10px;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+}
+
+.text {
+    text-indent: 2em;
+}
+
+.text-hided {
+    text-indent: 2em;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    user-select: none;
+}
+
+.date-time {
+    font-size: 75%;
+    padding-bottom: 3px;
+}
+
+.date {
+    display: none;
+}
+
+.diary-list:hover .date {
+    display: inline;
+}
+
+.diary-list:hover .fa-close {
+    display: inline;
+}
+
+.fa-close:active {
+    color: gray;
+}

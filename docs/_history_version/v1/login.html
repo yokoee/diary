@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#4c4c4c">
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="bing">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <title>login -diary</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id='header'>
+        <img class="transition" src="img/avatar.png" onclick='window.open("https://about.yokoee.cn")'>
+        <div>
+
+        </div>
+        <div id='title' class="transition">
+            <p>bing</p>
+        </div>
+    </div>
+    <div id='content' class="transition">
+        <input type="password" name="password" id="input_pass" onkeypress="enter()" placeholder="输入密码验证身份" style="height:30px;border:0;padding:0;text-align:center;vertical-align:middle;">
+        <input type="button" onclick="submit()" value="提交" style="height:30px;border:0;background-color:white;"></input>
+    </div>
+    <script type="text/javascript">
+        if (document.cookie.length > 60) {
+            window.location.href = 'index.html';
+        }
+        window.onload = function() {
+            let ele = document.getElementsByClassName('transition');
+            for (let i = 0; i < ele.length; i++) {
+                ele[i].style.bottom = "0";
+            }
+        }
+
+        function enter() {
+            if (event.keyCode == 13) {
+                submit();
+            }
+        }
+
+        function submit() {
+            input_pass = document.getElementById('input_pass');
+            if (input_pass.value.length < 1) return;
+            xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://yokoee.cn:3000/token', false);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send('password=' + input_pass.value);
+            if (xhr.status == 200) {
+                document.cookie = 'token=' + xhr.responseText;
+                window.location.href = 'index.html';
+            } else {
+                input_pass.placeholder = '密码错误';
+                input_pass.value = null;
+            }
+        }
+    </script>
+</body>
+
+</html>
