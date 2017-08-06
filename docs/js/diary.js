@@ -40,7 +40,7 @@ function add_diary() {
     let text = document.getElementById('input_diary').value;
     if (text.length < 0) return;
     xhr_add = new XMLHttpRequest();
-    xhr_add.open('POST', 'http://yokoee.cn:3000/journal/add', true);
+    xhr_add.open('POST', 'http://123.207.96.127:3000/journal/add', true);
     xhr_add.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr_add.send(document.cookie + '&text=' + text);
     xhr_add.onreadystatechange = function() {
@@ -54,7 +54,7 @@ function del_diary(that) {
     let id = that.parentNode.parentNode.id;
     if (confirm('确定要删除吗？')) {
         xhr_del = new XMLHttpRequest();
-        xhr_del.open('POST', 'http://yokoee.cn:3000/journal/delete', false);
+        xhr_del.open('POST', 'http://123.207.96.127:3000/journal/delete', false);
         xhr_del.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr_del.send(document.cookie + '&id=' + id);
         if (xhr_del.status == 200) {
@@ -68,7 +68,7 @@ function del_diary(that) {
 
 function get_diary(page) {
     let xhr_diary = new XMLHttpRequest();
-    xhr_diary.open('POST', 'http://yokoee.cn:3000/journals/page/' + page, false);
+    xhr_diary.open('POST', 'http://123.207.96.127:3000/journals/page/' + page, false);
     xhr_diary.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr_diary.send(document.cookie);
     if (xhr_diary.status == 401) {

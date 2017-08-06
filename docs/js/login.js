@@ -22,7 +22,7 @@ function submit() {
     let input_pass = document.getElementById("input_pass");
     if (input_pass.value.length < 1) return;
     let xhr_login = new XMLHttpRequest();
-    xhr_login.open('POST', 'http://yokoee.cn:3000/token', false);
+    xhr_login.open('POST', 'http://123.207.96.127:3000/token', false);
     xhr_login.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr_login.send('password=' + input_pass.value);
     if (xhr_login.status == 200) {
