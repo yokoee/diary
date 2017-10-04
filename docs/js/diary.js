@@ -95,6 +95,8 @@ function create_diary_html(diaries) {
         date_time.setAttribute('class', 'date-time');
 
         let span1 = document.createElement('span');
+        if (diary.date.hour < 10) diary.date.hour = '0' + diary.date.hour;
+        if (diary.date.min < 10) diary.date.min = '0' + diary.date.min;
         span1.innerText = diary.date.hour + ':' + diary.date.min;
         let span2 = document.createElement('span');
         span2.setAttribute('class', 'date');
