@@ -110,12 +110,13 @@
     }
 }
 
-.text {
+
+/* .text {
     text-indent: 2em;
-}
+} */
 
 .text-hided {
-    text-indent: 2em;
+    /* text-indent: 2em; */
     color: transparent;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     user-select: none;
