@@ -10,6 +10,8 @@ window.onload = function() {
     }
     // 保存新日记草稿
     document.querySelector('#input_diary').addEventListener('input', saveDraft);
+
+    document.querySelector('#input_pass').focus();
 }
 
 // 回车提交
