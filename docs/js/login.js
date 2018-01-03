@@ -8,6 +8,8 @@ window.onload = function() {
         html.className = 'diary';
         create_diary();
     }
+    // 保存新日记草稿
+    document.querySelector('#input_diary').addEventListener('input', saveDraft);
 }
 
 // 回车提交

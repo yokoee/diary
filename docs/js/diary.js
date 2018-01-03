@@ -1,3 +1,7 @@
+function saveDraft() {
+    window.localStorage.setItem('draft', this.value);
+}
+
 // 显示/隐藏增加日记输入框
 function btn_add_click() {
     let add_diary = document.getElementById("add-diary");
@@ -5,6 +9,7 @@ function btn_add_click() {
     if (add_diary.style.display == 'none') {
         add_diary.style.display = 'block';
         window.scrollTo(0, 0);
+        document.querySelector('#input_diary').focus();
     } else {
         add_diary.style.display = 'none';
     }
@@ -14,6 +19,7 @@ function btn_add_click() {
 function logout() {
     document.cookie = 'token=';
     document.getElementsByClassName("diary")[0].className = 'login';
+    window.localStorage.removeItem('draft');
 }
 
 // 日记内容打马赛克
@@ -114,8 +120,8 @@ function create_diary_html(diaries) {
         diary_list.appendChild(text);
         diary_list.appendChild(date_time);
         content.insertBefore(diary_list, next_page);
-
     }, this);
+    if (window.localStorage.getItem('draft')) document.querySelector('#input_diary').value = window.localStorage.getItem('draft');
 }
 
 var PAGE = 1;
