@@ -1,92 +1,50 @@
-html {
-    font-family: 'Roboto';
-    color: rgba(0, 0, 0, .87);
-}
-
-.login {
-    height: 100%;
-}
-
-.login body {
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-
-.login #container {
+main {
     margin: auto;
-    background-color: #fafafa;
-    max-width: 600px;
-    height: inherit;
+    margin-top: 120px;
+    width: 300px;
 }
 
-.login .avatar {
-    width: 0px;
-    height: 0px;
+main>.avatar {
+    width: 100px;
+    height: 100px;
+    margin: auto;
     border-radius: 50%;
-    border: 1px solid #EAEAEA;
-    padding: 4px;
-    box-sizing: border-box;
-    animation: avatar 0.5s ease-in;
-    animation-fill-mode: forwards;
+    box-shadow: 0 3px 5px lightgray;
+    background: url(../img/lala.png);
+    background-size: cover;
 }
 
-.login .input {
-    margin: 0 !important;
-    height: 30px !important;
-    border: 0 !important;
-    padding: 0 !important;
-    text-align: center !important;
-    vertical-align: middle !important;
-    background-color: white !important;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
-    animation: input 0.5s ease-out;
-    animation-fill-mode: forwards;
+main>.name {
+    text-align: center;
+    color: #3d3d3d;
+    font-weight: bold;
 }
 
-#input_submit {
-    font-size: 1em;
-    color: #00bcd4 !important;
+form[name="login"]>input {
+    display: block;
+    background-color: white;
+    border: none;
+    border-bottom: 2px solid transparent;
+    outline: none;
+    padding: 0;
+    margin: 20px auto;
+    width: 200px;
+    box-shadow: 0 3px 5px lightgray;
+    text-align: center;
+    line-height: 35px;
 }
 
-@keyframes avatar {
-    from {
-        margin-top: 170px;
-    }
-    to {
-        width: 100px;
-        height: 100px;
-        margin-top: 120px;
-    }
+input[type="password"]:focus {
+    border-bottom: 2px solid #FCD133;
 }
 
-@keyframes input {
-    from {
-        margin: 150px 2px;
-    }
-    to {
-        margin: 30px 2px;
-    }
+input[type="submit"] {
+    color: #FCD133;
+    line-height: 30px !important;
+    transition: all .1s;
 }
 
-.login #input_pass {
-    width: 150px !important;
-}
-
-.login #input_submit {
-    width: 30px !important;
-}
-
-.login #input_pass:focus {
-    box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.12);
-}
-
-.login #input_submit:active {
-    box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.12);
-}
-
-.login .button,
-.login #content {
-    display: none;
+input[type="submit"]:active {
+    color: #fff;
+    background-color: #FCD133;
 }

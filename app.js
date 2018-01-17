@@ -97,7 +97,7 @@ app.post('/journal/add', (req, res) => {
         res.send('200 OK!');
     });
 });
-app.put('/journal/update', (req, res) => {
+app.post('/journal/update', (req, res) => {
     Journal.findOne({ id: req.body.id }, (err, doc) => {
         doc.update = getTime();
         doc.text = req.body.text;

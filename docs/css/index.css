@@ -1,0 +1,340 @@
+body {
+    margin: 0;
+}
+
+
+/* -- header -- */
+
+header {
+    position: fixed;
+    background-color: white;
+    box-shadow: 0 0 18px 0 #d4dee6;
+    color: #3d3d3d;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.avatar {
+    border-radius: 50%;
+    background: url(../img/lala.png);
+    background-size: cover;
+}
+
+.name {
+    text-align: center;
+    font-size: .8rem;
+}
+
+.title {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+}
+
+.btns {
+    position: absolute;
+    user-select: none;
+}
+
+.btns>div:active {
+    color: #FCD133;
+}
+
+
+/* - for PC - */
+
+@media screen and (min-width:768px) {
+    header {
+        width: 80px;
+        height: 100%;
+    }
+    .avatar {
+        margin: 10px auto;
+        width: 70px;
+        height: 70px;
+    }
+    .btns {
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .btns>div {
+        display: block;
+        margin: 30px;
+        cursor: pointer;
+    }
+}
+
+
+/* - for mobile - */
+
+@media screen and (max-width:767px) {
+    header {
+        height: 50px;
+        width: 100%;
+    }
+    header>* {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .avatar {
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+    }
+    .btns {
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-right: 5px;
+    }
+    .btns>div {
+        margin: 0 8px;
+        cursor: pointer;
+    }
+}
+
+
+/* -- main -- */
+
+main {
+    position: relative;
+    transition: filter .5s;
+}
+
+main.blur {
+    filter: blur(2px);
+}
+
+.monthly-block {
+    color: #3d3d3d;
+}
+
+.month {
+    width: 100px;
+    color: #FCD133;
+    text-align: center;
+    box-shadow: 0 0 18px #d4dee6;
+    user-select: none;
+    cursor: pointer;
+}
+
+.month>* {
+    vertical-align: middle;
+}
+
+.diary {
+    margin: 20px 0;
+    box-shadow: 0 0 18px #d4dee6;
+    border-radius: 3px;
+}
+
+.diary>.text {
+    padding: 5px 30px;
+    text-indent: 2em;
+}
+
+.diary>.text>p.hide {
+    user-select: none;
+    filter: blur(5px);
+}
+
+.diary>.footer {
+    border-top: 1px solid #d4dee6;
+    position: relative;
+    font-size: .8em;
+}
+
+.diary>.footer>* {
+    display: inline-block;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+.footer-date>* {
+    margin-left: 10px;
+}
+
+.footer-btns {
+    position: absolute;
+    right: 10px;
+    user-select: none;
+}
+
+.footer-btns>i {
+    line-height: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.footer-btns>i:active {
+    color: #FCD133;
+}
+
+@media screen and (min-width:768px) {
+    main {
+        margin-left: 80px;
+    }
+    .monthly-block {
+        margin: 0 200px;
+        margin-top: 30px;
+    }
+    .monthly-block:first-child {
+        margin-top: 60px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    main {
+        margin-top: 50px;
+    }
+    .monthly-block {
+        margin: 0 20px;
+        margin-top: 20px;
+    }
+    .monthly-block:first-child {
+        margin-top: 70px;
+    }
+}
+
+
+/* loading */
+
+.loading {
+    text-align: center;
+    cursor: pointer;
+    font-size: .8em;
+    color: #FCD133;
+    margin-bottom: 10px;
+}
+
+.loading>p {
+    line-height: 30px;
+    margin: 0;
+}
+
+.loading>.material-icons {
+    animation: loading 2s infinite;
+}
+
+@keyframes loading {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* edit panel */
+
+.edit-panel {
+    display: none;
+    position: fixed;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 18px #d4dee6;
+    border-radius: 5px;
+}
+
+.edit-panel>.textfield {
+    margin: 30px 30px 0;
+}
+
+.edit-panel>.textfield>textarea {
+    outline: none;
+    border: 0;
+    margin: 0;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #f5f5f5;
+    text-indent: 2em;
+    font-size: .8em;
+    font-family: inherit;
+    width: 200px;
+    height: 180px;
+}
+
+.edit-panel>.edit-footer {
+    margin: 0 30px;
+    position: relative;
+    height: 40px;
+}
+
+.edit-footer>div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.edit-info {
+    font-size: x-small;
+    top: 2px;
+}
+
+.edit-btns {
+    position: absolute;
+    right: 0;
+    margin: 8px 0;
+}
+
+.edit-btns>* {
+    margin-left: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#btn-edit-cancel {
+    color: #3d3d3d;
+}
+
+#btn-edit-done {
+    color: #FCD133;
+}
+
+
+/* index panel */
+
+.index-panel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100px;
+    transform: translate(-50%, -50%);
+    padding: 60px;
+    max-height: 300px;
+    overflow-y: scroll;
+    background-color: white;
+    box-shadow: 0 0 18px #d4dee6;
+}
+
+.index-item>* {
+    vertical-align: middle;
+    color: #3d3d3d;
+    line-height: 60px;
+    cursor: pointer;
+}
+
+.index-item>i {
+    margin-right: 5px;
+}
+
+
+/* scroll bar */
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #FCD133;
+    border-radius: 5px;
+}

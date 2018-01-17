@@ -1,0 +1,53 @@
+<!-- version:v2.1.1 -->
+<!DOCTYPE html>
+<!-- 登陆页面id为login，日记页面id为diary -->
+<html class="login">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#00bcd4">
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="日记">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <title>日记</title>
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/diary.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="nav">
+            <img class="avatar" src="img/avatar.png" onclick="window.open('http://about.yokoee.cn');" alt="bing">
+            <br class="br">
+            <input id="input_pass" class="input" type="password" name="password" onkeypress="enter()" placeholder="输入密码">
+            <input id="input_submit" class="input" type="button" value=">" onclick="submit()">
+            <div class="button" id="btn-hide" onclick="hide_diary(this)"><span class="fa fa-eye"></span></div>
+            <div class="button" id="btn-add" onclick="btn_add_click()"><span class="fa fa-plus"></span></div>
+            <div class="button" id="btn-logout" onclick="logout()"><span class="fa fa-sign-out"></span></div>
+        </div>
+        <div id=content>
+            <div id="add-diary" class="diary-list" style="display:none;">
+                <div>
+                    <p style="margin:0;float:left;color:#606060">新日记：</p>
+                    <div id="btn-submit" onclick="add_diary()" style="float:right;margin-right:3px;"><span class="fa fa-check"></span></div>
+                </div>
+                <textarea id="input_diary" name=""></textarea>
+            </div>
+            <!-- 日记列表模板
+            <div class="diary-list">
+                <p class="text">这是一条日记</p>
+                <p class="date-time"><span>10:24</span><span class="date"> ,2017/06/06</span><span class="fa fa-close"></span></p>
+            </div>
+            -->
+            <p id="next-page" style="display:block;text-align:center;font-size:0.8em" onclick="next_page()">加载更多</p>
+        </div>
+    </div>
+    <script src="js/diary.js"></script>
+    <script src="js/login.js"></script>
+</body>

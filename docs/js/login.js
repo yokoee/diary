@@ -1,41 +1,46 @@
-let input_submit = document.getElementById("input_submit");
-let html = document.getElementsByClassName("login")[0];
+$(document).ready(() => {
+    //const address = 'localhost:8080';
+    const address = '123.207.96.127:3000';
 
+    let login = $('form[name="login"]');
+    let pwInput = $('input[type="password"]');
+    let smInput = $('input[type="submit"]');
 
-window.onload = function() {
-    // 刷新免重新登录
-    if (document.cookie.length > 60) {
-        html.className = 'diary';
-        create_diary();
+    if (window.sessionStorage.getItem('token')) {
+        location.replace('index.html');
     }
-    // 保存新日记草稿
-    document.querySelector('#input_diary').addEventListener('input', saveDraft);
 
-    document.querySelector('#input_pass').focus();
-}
+    pwInput.focus();
 
-// 回车提交
-function enter() {
-    if (event.keyCode == 13) {
-        submit();
-    }
-}
+    smInput.prop('disabled', 'disabled').css('color', 'gray');
+    pwInput.on('input', function() {
+        if ($(this).val().length == 0) {
+            smInput.attr('disabled', 'disabled').css('color', 'gray');
+        } else {
+            smInput.removeAttr('disabled').css('color', '');
+        }
+    })
 
-// 登录
-function submit() {
-    let input_pass = document.getElementById("input_pass");
-    if (input_pass.value.length < 1) return;
-    let xhr_login = new XMLHttpRequest();
-    xhr_login.open('POST', 'http://123.207.96.127:3000/token', false);
-    xhr_login.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr_login.send('password=' + input_pass.value);
-    if (xhr_login.status == 200) {
-        input_pass.value = null;
-        document.cookie = 'token=' + xhr_login.responseText;
-        html.className = 'diary';
-        create_diary();
-    } else {
-        input_pass.placeholder = '你猜不到密码的啦🙄';
-        input_pass.value = null;
-    }
-}
+    login.submit((event) => {
+        event.preventDefault();
+        $.ajax({
+            url: 'http://' + address + '/token',
+            type: 'post',
+            data: { password: pwInput.val() },
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded"
+            },
+            success: function(data) {
+                window.sessionStorage.setItem('token', data);
+                location.replace('index.html');
+            },
+            statusCode: {
+                401: function() {
+                    pwInput.val('').trigger('input');
+                    pwInput.attr('placeholder', '你猜不到密码的啦🙄');
+                },
+            }
+
+        })
+    })
+})
