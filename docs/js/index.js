@@ -3,6 +3,8 @@ const address = '123.207.96.127:3000';
 
 $(document).ready(() => {
 
+    if (!window.sessionStorage.getItem('token')) location.replace('login.html');
+
     // header buttons
     let btnLogout = $('#btn-logout');
     let btnHide = $('#btn-hide');
