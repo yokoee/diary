@@ -2,7 +2,7 @@ main {
     margin: auto;
     margin-top: 120px;
     width: 300px;
-    font-family: Noto Sans CJK, Roboto, sans-serif;
+    font-family: Roboto, sans-serif;
 }
 
 main>.avatar {
