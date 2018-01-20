@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost/journal');
+mongoose.connect('mongodb://localhost/diary');
 let Schema = mongoose.Schema;
 
 
-let journalScheme = new Schema({
+let diaryScheme = new Schema({
     id: Number,
     date: {
         year: Number,
@@ -24,9 +24,9 @@ let journalScheme = new Schema({
     },
     text: String,
 }, {
-    collection: 'journals'
+    collection: 'diaries'
 });
 
-let Journal = mongoose.model('Journal', journalScheme);
+let Diary = mongoose.model('Diary', diaryScheme);
 
-module.exports.Journal = Journal;
+module.exports.Diary = Diary;

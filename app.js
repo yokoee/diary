@@ -2,7 +2,7 @@
 const express = require('express');
 
 const config = require('./config.js')
-const Journal = require('./mongodb/model.js').Journal
+const Diary = require('./mongodb/model.js').Diary
 
 let app = express();
 app.set('port', process.env.PORT || 3000);
@@ -47,58 +47,58 @@ app.use((req, res, next) => {
         res.send('401');
     }
 });
-app.post('/journals/page/:page', (req, res) => {
-    let allJournals = [];
-    Journal.find({}, (err, doc) => {
+app.post('/diaries/page/:page', (req, res) => {
+    let allDiaries = [];
+    Diary.find({}, (err, doc) => {
         if (err) {
             res.header('Access-Control-Allow-Origin', '*');
             res.send('');
         } else {
             doc.forEach((ele) => {
-                let aJournal = {};
-                aJournal.id = ele.id;
-                aJournal.date = ele.date;
-                aJournal.update = ele.update;
-                aJournal.text = ele.text;
-                allJournals.push(aJournal);
+                let aDiary = {};
+                aDiary.id = ele.id;
+                aDiary.date = ele.date;
+                aDiary.update = ele.update;
+                aDiary.text = ele.text;
+                allDiaries.push(aDiary);
             });
-            allJournals = allJournals.reverse();
+            allDiaries = allDiaries.reverse();
             let perPage = 20;
             let x = 0;
             let y = x + perPage;
-            let journalPage = [];
-            for (var i = 0; i < Math.ceil(allJournals.length / perPage); i++) {
-                journalPage.push(allJournals.slice(x, y));
+            let diaryPage = [];
+            for (var i = 0; i < Math.ceil(allDiaries.length / perPage); i++) {
+                diaryPage.push(allDiaries.slice(x, y));
                 x += perPage;
                 y += perPage;
             }
             res.header('Access-Control-Allow-Origin', '*');
-            res.json(journalPage[Number(req.params.page) - 1]);
+            res.json(diaryPage[Number(req.params.page) - 1]);
         }
     })
 });
-app.post('/journal/id/:id', (req, res) => {
-    Journal.findOne({ id: Number(req.params.id) }, (err, doc) => {
+app.post('/diary/id/:id', (req, res) => {
+    Diary.findOne({ id: Number(req.params.id) }, (err, doc) => {
         if (!err) {
-            let aJournal = {};
-            aJournal.id = doc.id;
-            aJournal.date = doc.date;
-            aJournal.update = doc.update;
-            aJournal.text = doc.text;
+            let aDiary = {};
+            aDiary.id = doc.id;
+            aDiary.date = doc.date;
+            aDiary.update = doc.update;
+            aDiary.text = doc.text;
             res.header('Access-Control-Allow-Origin', '*');
-            res.json(aJournal);
+            res.json(aDiary);
         }
     });
 });
-app.post('/journal/add', (req, res) => {
-    Journal.create({ id: new Date().getTime(), date: getTime(), update: '', text: req.body.text }, () => {
+app.post('/diary/add', (req, res) => {
+    Diary.create({ id: new Date().getTime(), date: getTime(), update: '', text: req.body.text }, () => {
         res.header('Access-Control-Allow-Origin', '*');
         res.statusCode = 200;
         res.send('200 OK!');
     });
 });
-app.post('/journal/update', (req, res) => {
-    Journal.findOne({ id: req.body.id }, (err, doc) => {
+app.post('/diary/update', (req, res) => {
+    Diary.findOne({ id: req.body.id }, (err, doc) => {
         doc.update = getTime();
         doc.text = req.body.text;
         doc.save((err) => {
@@ -108,8 +108,8 @@ app.post('/journal/update', (req, res) => {
         });
     });
 });
-app.post('/journal/delete', (req, res) => {
-    Journal.findOne({ id: req.body.id }, (err, doc) => {
+app.post('/diary/delete', (req, res) => {
+    Diary.findOne({ id: req.body.id }, (err, doc) => {
         doc.remove(() => {
             res.header('Access-Control-Allow-Origin', '*');
             res.statusCode = 200;
