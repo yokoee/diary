@@ -1,7 +1,7 @@
 if (!window.sessionStorage.getItem('token')) location.replace('login.html');
 
 //const address = 'localhost:8080';
-const address = '';
+const address = '123.207.96.127:3000';
 
 $(document).ready(() => {
 
@@ -52,7 +52,7 @@ $(document).ready(() => {
         let confirm = window.confirm('确定要删除吗？');
         if (confirm) {
             $.ajax({
-                url: 'http://' + address + '/journal/delete',
+                url: 'http://' + address + '/diary/delete',
                 type: 'post',
                 data: {
                     token: window.sessionStorage.getItem('token'),
@@ -90,7 +90,7 @@ $(document).ready(() => {
     $('.edit-panel').on('submit', '.textfield[name="new-diary"]', function(event) {
         event.preventDefault();
         $.ajax({
-            url: 'http://' + address + '/journal/add',
+            url: 'http://' + address + '/diary/add',
             type: 'post',
             data: {
                 token: window.sessionStorage.getItem('token'),
@@ -115,7 +115,7 @@ $(document).ready(() => {
     $('.edit-panel').on('submit', '.textfield[name="edit-diary"]', function(event) {
         event.preventDefault();
         $.ajax({
-            url: 'http://' + address + '/journal/update',
+            url: 'http://' + address + '/diary/update',
             type: 'post',
             data: {
                 token: window.sessionStorage.getItem('token'),
@@ -164,7 +164,7 @@ $(document).ready(() => {
     $('.loading').on('click', function() {
         let nextPage = parseInt($('.wrapper').data('page')) + 1;
         $.ajax({
-            url: 'http://' + address + '/journals/page/' + nextPage,
+            url: 'http://' + address + '/diaries/page/' + nextPage,
             type: 'post',
             data: { 'token': window.sessionStorage.getItem('token') },
             headers: {
@@ -196,7 +196,7 @@ $(document).ready(() => {
     })
 
     $.ajax({
-        url: 'http://' + address + '/journals/page/1',
+        url: 'http://' + address + '/diaries/page/1',
         type: 'post',
         data: { 'token': window.sessionStorage.getItem('token') },
         headers: {

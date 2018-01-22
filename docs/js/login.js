@@ -1,6 +1,6 @@
 $(document).ready(() => {
     //const address = 'localhost:8080';
-    const address = '';
+    const address = '123.207.96.127:3000';
 
     let login = $('form[name="login"]');
     let pwInput = $('input[type="password"]');
