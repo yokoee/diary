@@ -1,0 +1,118 @@
+<!-- version:v2.1.1 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="theme-color" content="#ffffff">
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff">
+    <meta name="apple-mobile-web-app-title" content="日记">
+    <link rel="icon" type="image/png" href="img/lala.png">
+
+    <title>日记</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="avatar"></div>
+        <div class="name">
+            <p>bing</p>
+        </div>
+        <div class="title">
+            <p>日记</p>
+        </div>
+        <div class="btns">
+            <div class="btn material-icons" id="btn-new" title="新日记">add</div>
+            <!-- visibility or visibility_off -->
+            <div class="btn material-icons" id="btn-hide" title="隐藏日记">visibility</div>
+            <div class="btn material-icons" id="btn-logout" title="退出登录">exit_to_app</div>
+        </div>
+    </header>
+    <main>
+        <div class="wrapper">
+            <!-- <section class="monthly-block" id="2018-01">
+                <div class="month">
+                    <span>2018-01</span>
+                    <i class="arrow material-icons">arrow_drop_up</i>
+                </div>
+                <div class="diary-list">
+                    <div class="diary" id="1515669110163">
+                        <div class="text">
+                            <p>这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记</p>
+                        </div>
+                        <div class="footer">
+                            <div class="footer-date">
+                                <span class="time">12:41</span><span class="date">15日,周一</span>
+                            </div>
+                            <div class="footer-btns">
+                                <i class="material-icons btn-edit">edit</i>
+                                <i class="material-icons btn-delete">delete_forever</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="monthly-block" id="2017-12">
+                <div class="month">
+                    <span>2017-12</span>
+                    <i class="arrow material-icons">arrow_drop_up</i>
+                </div>
+                <div class="diary-list">
+                    <div class="diary" id="1514970516990">
+                        <div class="text">
+                            <p>这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记这是一条日记</p>
+                        </div>
+                        <div class="footer">
+                            <div class="footer-date">
+                                <span class="time">12:41</span><span class="date">15日,周一</span>
+                            </div>
+                            <div class="footer-btns">
+                                <i class="material-icons btn-edit">edit</i>
+                                <i class="material-icons btn-delete">delete_forever</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+        </div>
+        <div class="loading">
+            <p>加载更多 ...</p>
+        </div>
+    </main>
+    <div class="edit-panel">
+        <form class="textfield" name="">
+            <textarea placeholder="添加一条新的日记"></textarea>
+        </form>
+        <div class="edit-footer">
+            <div class="edit-info">
+                <span>0</span>个字符
+            </div>
+            <div class="edit-btns">
+                <div class="material-icons" id="btn-edit-cancel" title="取消">cancel</div>
+                <div class="material-icons" id="btn-edit-done" title="提交">check_circle</div>
+            </div>
+        </div>
+    </div>
+    <div class="index-panel">
+        <!-- <div class="index-item">
+            <i class="material-icons">label_outline</i>
+            <span>2017-10</span>
+        </div> -->
+    </div>
+
+
+    <script src="./js/lib/jquery-3.2.1.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
