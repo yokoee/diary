@@ -34,4 +34,9 @@ gulp.task('css', () => {
         .pipe(gulp.dest('dist/css'))
 })
 
-gulp.task('default', ['css', 'js'])
+gulp.task('img', () => {
+    gulp.src('img/*')
+        .pipe(gulp.dest('dist/img'))
+})
+
+gulp.task('default', ['css', 'js', 'img'])
