@@ -1,6 +1,6 @@
 if (!window.sessionStorage.getItem('token')) location.replace('login.html');
 
-//const address = 'localhost:8080';
+//const address = 'localhost:3000';
 const address = '123.207.96.127:3000';
 
 $(document).ready(() => {

@@ -6,7 +6,7 @@ const cleanCSS = require('gulp-clean-css')
 const rename = require('gulp-rename')
 
 gulp.task('js', () => {
-    gulp.src('js/*.js')
+    gulp.src('src/js/*.js')
         .pipe(babel({
             presets: ['env']
         }))
@@ -18,12 +18,12 @@ gulp.task('js', () => {
         }))
         .pipe(gulp.dest('dist/js'))
 
-    gulp.src('js/lib/*.js')
-        .pipe(gulp.dest('dist/lib/js'))
+    gulp.src('src/js/lib/*.js')
+        .pipe(gulp.dest('dist/js/lib'))
 })
 
 gulp.task('css', () => {
-    gulp.src('css/*.css')
+    gulp.src('src/css/*.css')
         .pipe(autoprefixer({
             browsers: ['>1%']
         }))
@@ -35,7 +35,7 @@ gulp.task('css', () => {
 })
 
 gulp.task('img', () => {
-    gulp.src('img/*')
+    gulp.src('src/img/*')
         .pipe(gulp.dest('dist/img'))
 })
 
