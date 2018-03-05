@@ -137,6 +137,8 @@ main.blur {
 .diary>.text {
     padding: 5px 30px;
     text-indent: 2em;
+    white-space: pre-wrap;
+    word-spacing: 1.5em;
 }
 
 .diary>.text>p.hide {

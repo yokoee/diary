@@ -232,7 +232,7 @@ function createDiary(diary) {
 
     let time = diaryCopy.date.hour + ':' + diaryCopy.date.min;
 
-    let textNode = $('<div class="text"><p>' + diaryCopy.text + '</p></div>');
+    let textNode = $('<div class="text"><p>' + diaryCopy.text.replace(/\n/g, '\n  ') + '</p></div>');
     let footerNode = $('<div class="footer"><div class="footer-date"><span class="time">' + time + '</span><span class="date">' + diaryCopy.date.day + '日</span></div><div class="footer-btns"><i class="material-icons btn-edit">edit</i><i class="material-icons btn-delete">delete_forever</i></div></div>');
     let diaryNode = $('<div class="diary" id="' + diaryCopy.id + '"></div>');
     diaryNode.append(textNode).append(footerNode);
