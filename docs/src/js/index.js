@@ -119,7 +119,7 @@ $(document).ready(() => {
             type: 'post',
             data: {
                 token: window.sessionStorage.getItem('token'),
-                text: $('.textfield>textarea').val(),
+                text: $('.textfield>textarea').val().replace(/\n  /g, '\n'),
                 id: $('.textfield').data('id')
             },
             headers: {
@@ -207,6 +207,7 @@ $(document).ready(() => {
             handleDiaries(data);
             // 当前加载的页数
             $('.wrapper').data('page', 1);
+            $('#btn-hide').click(); // 默认马赛克
         },
         statusCode: {
             401: () => {
@@ -215,7 +216,6 @@ $(document).ready(() => {
             }
         }
     })
-
 })
 
 function createDiary(diary) {
